@@ -41,22 +41,13 @@ return {
 			}),
 		})
 
-		-- Set up lspconfig.
+		-- Set up lspconfig capabilities for all servers.
+		-- mason-lspconfig.setup() (see core/plugins.lua) auto-enables installed
+		-- servers via automatic_enable; setup_handlers() no longer exists.
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities) -- client and server agrees on possible actions
-		-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 
-		local lspconfig = require("lspconfig")
-
-		-- use mason and list through all lsps and enable the capabilities
-		require("mason-lspconfig").setup_handlers({
-			function(server)
-				lspconfig[server].setup({ capabilities = capabilities })
-			end,
-			["tsserver"] = function()
-				lspconfig.tsserver.setup({ settings = { completions = { completeFunctionCalls = true } } })
-			end,
-		})
+		vim.lsp.config("*", { capabilities = capabilities })
 	end,
 }
 -- return {}

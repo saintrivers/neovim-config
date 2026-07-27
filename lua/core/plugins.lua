@@ -33,13 +33,13 @@ require("ibl").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"lua_ls",
-		"gopls",
+		-- "gopls",
 		--		"rust_analyzer",
-		"angularls",
-		"tsserver",
-		"tailwindcss",
-		"dockerls",
-		"docker_compose_language_service",
+		-- "angularls",
+		-- "tsserver",
+		-- "tailwindcss",
+		-- "dockerls",
+		-- "docker_compose_language_service",
 		"clangd",
 	},
 })
